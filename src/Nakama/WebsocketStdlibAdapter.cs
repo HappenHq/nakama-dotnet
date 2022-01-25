@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using System;
-using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
@@ -122,7 +121,7 @@ namespace Nakama
         {
             if (_webSocket == null || _webSocket.State != WebSocketState.Open)
             {
-                throw new SocketException((int)SocketError.NotConnected);
+                throw new WebSocketException((int)WebSocketError.ConnectionClosedPrematurely);
             }
 
             canceller.ThrowIfCancellationRequested();
